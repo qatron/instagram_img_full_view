@@ -10,31 +10,16 @@
 
 (function(){
 	"use strict";
-	//alert('It works!');
-	//var obj=$('#react-root').attr('aria-hidden');
 	
-	
-	$("._mck9w._gvoze._f2mse").click(function(){
-		var obj=$('#react-root').attr('aria-hidden');
-		
-		
-		function AriaCheck(){
-			obj=$('#react-root').attr('aria-hidden');
-			if(obj!=='true'){
-				return setTimeout(AriaCheck,1000);
-			}
-			console.log("aria hidden");
-			ImgSourceAlert();
-			return true;
+	function AriaHiddenObserver(){
+		var target=$('#react-root')[0];
+		var config={attributeFilter:['aria-hidden']};
+		function callback(){
+			alert('works');
 		}
-		AriaCheck();
-		function ImgSourceAlert(){
-			console.log('isa');
-			var imgSource=$('img').last().attr('src');//.$("[src$=\".*scontent.*\"]");//.last();
-			alert(imgSource);
-		}
-		
-	});
-		
+		var observer=new MutationObserver(callback);
+		observer.observe(target,config);
+	}
+	AriaHiddenObserver();
 	
 })();

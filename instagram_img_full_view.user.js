@@ -24,11 +24,17 @@
 				return setTimeout(AriaCheck,1000);
 			}
 			console.log("aria hidden");
+			ImgSourceAlert();
 			return true;
 		}
 		AriaCheck();
+		function ImgSourceAlert(){
+			console.log('isa');
+			var imgSource=$('img').last().attr('src');//.$("[src$=\".*scontent.*\"]");//.last();
+			alert(imgSource);
+		}
+		
 	});
-	
-	
+		
 	
 })();

@@ -15,11 +15,22 @@
 		var target=$('#react-root')[0];
 		var config={attributeFilter:['aria-hidden']};
 		function callback(){
-			alert('works');
+			//alert('works');
+			alert(NewImgBaseFind());
 		}
 		var observer=new MutationObserver(callback);
 		observer.observe(target,config);
 	}
-	AriaHiddenObserver();
 	
+	function SourceImgFind(){
+		var source=$('img').last().attr('src');
+		return source;
+	}
+	
+	function NewImgBaseFind(){
+		var base=$('div[data-reactroot]').last();
+		return base;
+	}
+	
+	AriaHiddenObserver();
 })();

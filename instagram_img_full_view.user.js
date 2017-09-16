@@ -32,6 +32,10 @@
 		return base;
 	}
 	
+	function NewImgActiveBaseFind(){
+		return SourceImgFind().element.parents('article:first-of-type').children('div:first-of-type');
+	}
+	
 	AriaHiddenObserver(function(){
 		alert(SourceImgFind().link);
 	});

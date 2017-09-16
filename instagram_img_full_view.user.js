@@ -32,12 +32,23 @@
 		return base;
 	}
 	
-	function NewImgActiveBaseFind(){
-		return SourceImgFind().element.parents('article:first-of-type').children('div:first-of-type');
+	function ActiveArea(){
+		function NewImgActiveBaseFind(){
+			return SourceImgFind().element.parents('article:first-of-type').children('div:first-of-type');
+		}
+		function ActiveAreaCreate(){
+			var area=$('<div>', {
+				id: 'custom_viewer_active_area',
+				style: ''
+				});
+			NewImgActiveBaseFind().prepend(area);
+		}
+		ActiveAreaCreate();
 	}
 	
 	AriaHiddenObserver(function(){
-		alert(SourceImgFind().link);
+		alert();
+		ActiveArea();
 	});
 	
 })();

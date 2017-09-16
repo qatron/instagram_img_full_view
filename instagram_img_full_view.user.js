@@ -11,20 +11,20 @@
 (function(){
 	"use strict";
 	
-	function AriaHiddenObserver(){
+	function AriaHiddenObserver(callback){
 		var target=$('#react-root')[0];
 		var config={attributeFilter:['aria-hidden']};
-		function callback(){
-			//alert('works');
-			alert(NewImgBaseFind());
-		}
 		var observer=new MutationObserver(callback);
 		observer.observe(target,config);
 	}
 	
 	function SourceImgFind(){
-		var source=$('img').last().attr('src');
-		return source;
+		var sourceElement=$('img').last();
+		var sourceLink=sourceElement.attr('src');
+		return {
+			element: sourceElement,
+			link: sourceLink
+		};
 	}
 	
 	function NewImgBaseFind(){
@@ -32,5 +32,8 @@
 		return base;
 	}
 	
-	AriaHiddenObserver();
+	AriaHiddenObserver(function(){
+		alert(SourceImgFind().link);
+	});
+	
 })();

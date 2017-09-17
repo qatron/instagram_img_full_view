@@ -39,13 +39,13 @@
 		function ActiveAreaCreate(){
 			var area=$('<div>', {
 				id: 'custom_viewer_active_area',
-				style: 'position: absolute; width: 100%; height: 8%; top: 0; z-index: 999; opacity: 0;background-image: linear-gradient(to bottom, rgba(112,193,255,0.65) 0%,rgba(0,0,0,0) 100%);'
+				style: 'position: absolute; width: 100%; height: 8%; top: 0; z-index: 999; opacity: 0; box-shadow: 0px 35px 20px -25px rgb(164, 205, 255) inset;'
 				});
 			
 			if($('#react-root').eq(0).attr('aria-hidden')==='true'){
 				NewImgActiveBaseFind().prepend(area);
 			}
-			$('#custom_viewer_active_area').hover(function(){$(this).stop().fadeTo('fast', 0.5 );}, function(){$(this).stop().fadeTo('fast', 0 );});
+			$('#custom_viewer_active_area').hover(function(){$(this).stop().fadeTo('fast', 0.8 );}, function(){$(this).stop().fadeTo('fast', 0 );});
 		}
 		ActiveAreaCreate();
 	}

@@ -50,6 +50,19 @@
 		ActiveAreaCreate();
 	}
 	
+	var CustomViewer = {
+		CreateArea: function(){
+			var area=$('<div>',{
+				id: 'custom_viewer',
+				style: ''
+			});
+			NewImgBaseFind().prepend(area);
+		},
+		RemoveArea: function(){
+			$('#custom_viewer').remove();
+		}
+	};
+	
 	AriaHiddenObserver(function(){
 		ActiveArea();
 	});

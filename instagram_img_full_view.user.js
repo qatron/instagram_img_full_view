@@ -34,17 +34,25 @@
 	}
 	
 	var CustomViewer = {
-		imageSource: SourceImgFind().link,
 		CreateArea: function(){
 			var area=$('<div>',{
 				id: 'custom_viewer',
-				style: 'position: absolute; z-index:1001; width: 100vw; height: 100vh; background-color: black; opacity: 0.8;'
+				style: 'position: absolute; z-index:1001; width: 100vw; height: 100vh; background-color: black; opacity: 1;'
 			});
 			NewImgBaseFind().prepend(area);
+			$('#custom_viewer').prepend(CustomViewer.img);
 			$('#custom_viewer').click(function(){CustomViewer.RemoveArea();});
 		},
 		RemoveArea: function(){
 			$('#custom_viewer').remove();
+		},
+		img: $('<img>',{
+			id: 'custom_image',
+			src: '',
+			style: 'all: initial; position: relative, width: auto, height: auto, max-height:95vh; display: block; margin: auto; padding: 20px 20px 20px 20px;'
+			 }),
+		imgSrcSet: function(){
+			CustomViewer.img.attr('src', SourceImgFind().link);
 		}
 	};
 	
@@ -69,6 +77,7 @@
 	
 	AriaHiddenObserver(function(){
 		ActiveArea();
+		CustomViewer.imgSrcSet();
 	});
 	
 })();

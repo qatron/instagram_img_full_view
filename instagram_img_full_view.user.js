@@ -45,7 +45,7 @@
 		CreateArea: function(){
 			var area=$('<div>',{
 				id: 'custom_viewer',
-				style: 'position: absolute; z-index:1001; width: 100vw; height: 100vh; background-color: black; opacity: 1;'
+				style: 'position: absolute; z-index:1001; width: 100%; height: 100%; background-color: black; opacity: 1;'
 			});
 			NewImgBaseFind().prepend(area);
 			$('#custom_viewer').prepend(CustomViewer.img);
@@ -57,7 +57,7 @@
 		img: $('<img>',{
 			id: 'custom_image',
 			src: '',
-			style: 'all: initial; position: relative, width: 100%, height: 100%, max-height:95vh; display: block; margin: auto; padding: 20px 20px 20px 20px;'
+			style: 'all: initial; position: relative; width: auto; max-height:95vh; display: block; margin: auto; padding: 20px 20px 20px 20px;'
 			 }),
 		imgSrcSet: function(){
 			CustomViewer.img.attr('src', SourceImgFind().link);
@@ -81,10 +81,10 @@
 				$('#custom_viewer_active_area').hover(function(){$(this).stop().fadeTo('fast', 0.8 );}, function(){$(this).stop().fadeTo('fast', 0 );});
 				$('#custom_viewer_active_area').click(function(){CustomViewer.CreateArea();});
 				$('._23gmb').keydown(function(e){
-					if(e.keyCode===38){
+					if(e.keyCode===38&&!$('#custom_viewer').length){
 						CustomViewer.CreateArea();
 					}
-					else if(e.keyCode===40){
+					else if(e.keyCode===40&&$('#custom_viewer').length){
 						CustomViewer.RemoveArea();
 					}
 				});

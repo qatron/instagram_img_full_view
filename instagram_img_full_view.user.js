@@ -18,6 +18,14 @@
 		observer.observe(target,config);
 	}
 	
+	function ArrowObserver(callback){
+		//var target=$('._23gmb')[0];
+		var target=$('._sxolz')[0];
+		var config={attributes: true, subtree: true};
+		var observer=new MutationObserver(callback);
+		observer.observe(target,config);
+	}
+	
 	function SourceImgFind(){
 		var sourceElement=$('img').last();
 		var sourceLink=sourceElement.attr('src');
@@ -49,7 +57,7 @@
 		img: $('<img>',{
 			id: 'custom_image',
 			src: '',
-			style: 'all: initial; position: relative, width: auto, height: auto, max-height:95vh; display: block; margin: auto; padding: 20px 20px 20px 20px;'
+			style: 'all: initial; position: relative, width: 100%, height: 100%, max-height:95vh; display: block; margin: auto; padding: 20px 20px 20px 20px;'
 			 }),
 		imgSrcSet: function(){
 			CustomViewer.img.attr('src', SourceImgFind().link);
@@ -61,23 +69,35 @@
 			return SourceImgFind().element.parents('article:first-of-type').children('div:first-of-type');
 		}
 		function ActiveAreaCreate(){
-			var area=$('<div>', {
-				id: 'custom_viewer_active_area',
-				style: 'position: absolute; width: 100%; height: 8%; top: 0; z-index: 1000; opacity: 0; box-shadow: 0px 35px 20px -25px rgb(164, 205, 255) inset;'
+			if(!$('#custom_viewer_active_area').length){
+				var area=$('<div>', {
+					id: 'custom_viewer_active_area',
+					style: 'position: absolute; width: 100%; height: 8%; top: 0; z-index: 1000; opacity: 0; box-shadow: 0px 35px 20px -25px rgb(164, 205, 255) inset;'
+					});
+
+				if($('#react-root').eq(0).attr('aria-hidden')==='true'){
+					NewImgActiveBaseFind().prepend(area);
+				}
+				$('#custom_viewer_active_area').hover(function(){$(this).stop().fadeTo('fast', 0.8 );}, function(){$(this).stop().fadeTo('fast', 0 );});
+				$('#custom_viewer_active_area').click(function(){CustomViewer.CreateArea();});
+				$('._23gmb').keydown(function(e){
+					if(e.keyCode===38){
+						CustomViewer.CreateArea();
+					}
+					else if(e.keyCode===40){
+						CustomViewer.RemoveArea();
+					}
 				});
-			
-			if($('#react-root').eq(0).attr('aria-hidden')==='true'){
-				NewImgActiveBaseFind().prepend(area);
-			}
-			$('#custom_viewer_active_area').hover(function(){$(this).stop().fadeTo('fast', 0.8 );}, function(){$(this).stop().fadeTo('fast', 0 );});
-			$('#custom_viewer_active_area').click(function(){CustomViewer.CreateArea();});
+				}
 		}
 		ActiveAreaCreate();
+		
 	}
 	
 	AriaHiddenObserver(function(){
 		ActiveArea();
 		CustomViewer.imgSrcSet();
+		ArrowObserver(function(){ActiveArea(); CustomViewer.imgSrcSet();});
 	});
 	
 })();

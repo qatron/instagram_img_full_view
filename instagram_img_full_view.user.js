@@ -49,7 +49,14 @@
 			});
 			NewImgBaseFind().prepend(area);
 			$('#custom_viewer').prepend(CustomViewer.img);
-			$('#custom_viewer').click(function(){CustomViewer.RemoveArea();});
+			$('#custom_viewer').click(function(event){
+				if(event.target===this){
+					return CustomViewer.RemoveArea();
+				}
+			});
+			$('#custom_image').click(function(event){
+				window.open(event.target.src, '_blank');
+			});
 		},
 		RemoveArea: function(){
 			$('#custom_viewer').remove();

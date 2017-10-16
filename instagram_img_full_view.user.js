@@ -38,7 +38,7 @@
 	function NewImgBaseFind(){
 		//var base=$('div[data-reactroot]').last();
 		//var base=$('div[data-reactroot]:last').children(':eq(1)').children(':eq(0)');
-		var base=$('div[data-reactroot]:last').children(':eq(0)');
+		var base=$('div[role="dialog"]:last');
 		return base;
 	}
 	

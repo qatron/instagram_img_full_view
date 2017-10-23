@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name        instagram img full view
-// @namespace   ps
+// @namespace   https://github.com/qatron
 // @description Instagram full size gallery image viewer.
 // @include     */www.instagram.com/*
 // @version     1

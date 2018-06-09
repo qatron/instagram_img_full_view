@@ -1,4 +1,6 @@
 # instagram_img_full_view
+Duo to another changes of Instagram structure, at the moment the script DOESN’T WORK. It may take some time to adapt it to changes.
+
 Simple and convenient full size image viewer for instagram gallery mode, delivered as a web browser user script.
 
 This is user script for web browsers. You can use it with userscript managers like Greasemonkey or Tampermonkey.
